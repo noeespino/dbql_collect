@@ -12,9 +12,9 @@
 #                                                          #
 # Email: noe.penaespino@teradata.com                       #
 #                                                          #
-# Date:  2025-12-19                                        #
+# Date:  2026-05-11                                        #
 #                                                          #
-# Version: 7.0                                             #
+# Version: 8.0                                             #
 #                                                          #
 #                                 			   #	  
 ############################################################
@@ -56,7 +56,7 @@ read -p  "DB-Username:" USERNAME
 read -sp "Password: " PASSWORD 
 echo
 read -p  "Session:" SESSION  
-read -p  "Date (e.g. 2024-01-04):" DATESESS 
+read -p  "Date (e.g. yyyy-mm-dd):" DATESESS 
 
 
 ### PATH KB0047374 Lake: DBQL ####################################################
@@ -77,7 +77,7 @@ read -p  "DB-Username:" USERNAME
 read -sp "Password: " PASSWORD 
 echo
 read -p "QueryID: " QUERYID
-read -p "Date (e.g. 2024-01-04):" DATESESS
+read -p "Date (e.g. yyyy-mm-dd):" DATESESS
 
 ### PATH KB0047374 Lake: DBQL ####################################################
 
