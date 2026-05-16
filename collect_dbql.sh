@@ -14,7 +14,7 @@
 #                                                          #
 # Date:  2026-05-11                                        #
 #                                                          #
-# Version: 8.0                                             #
+# Version: branch_fr                                       #
 #                                                          #
 #                                 			   #	  
 ############################################################
@@ -360,7 +360,7 @@ for file in "${DBQLogFiles[@]}"; do
         if [ -s "$file" ]; then
                 echo "DBQL log File $file ready for upload/download, check /var/opt/teradata/tdtemp/ for file."
                 found=true
-                break
+                
         fi
 done
 
