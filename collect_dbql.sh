@@ -375,12 +375,51 @@ fi
 
 ############################################################################
 
-echo "What are you collecting today? "
-echo "a) DBQLog"
-echo "b) DBQLStep"
-echo "c) DBQLExplain"
-echo "d) DBQLSQL"
-read -p "Option:" OPTION
+declare -A MENU_OPTIONS=(
+    [a]="DBQLog|Collects DBQL logs for a specific session"
+    [b]="DBQLStep|Collects DBQL step details for a query"
+    [c]="DBQLExplain|Collects DBQL explain plan for a query"
+    [d]="DBQLSQL|Collects DBQL SQL text for a query"
+)
+
+display_menu() {
+    log_and_print ""
+    log_and_print "╔════════════════════════════════════════╗"
+    log_and_print "║     DBQL Collection Tool - v1.0        ║"
+    log_and_print "╚════════════════════════════════════════╝"
+    log_and_print ""
+    log_and_print "Select what you want to collect:"
+    log_and_print ""
+    
+    for key in a b c d; do
+        IFS='|' read -r title desc <<< "${MENU_OPTIONS[$key]}"
+        log_and_print "  [$key] $title"
+        log_and_print "        → $desc"
+    done
+    
+    log_and_print ""
+}
+
+get_menu_selection() {
+    local choice
+    while true; do
+        display_menu
+        read -p "Enter your choice [a-d]: " choice
+        
+        if [[ -v MENU_OPTIONS[$choice] ]]; then
+            OPTION="$choice"
+            IFS='|' read -r title desc <<< "${MENU_OPTIONS[$choice]}"
+            log_and_print "You selected: $title"
+            log_and_print ""
+            return 0
+        else
+            log_and_print "ERROR: '$choice' is not a valid option. Try again."
+            echo ""
+        fi
+    done
+}
+
+get_menu_selection
 
 case $OPTION in
 
